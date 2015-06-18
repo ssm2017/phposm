@@ -1,0 +1,7 @@
+<?php
+$config = array(
+  'password' => 'abcd',
+  'log' => True,
+  'log_path' => '../../log/xmlrpc.log'
+);
+?>
