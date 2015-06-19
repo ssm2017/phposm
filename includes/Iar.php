@@ -154,13 +154,6 @@ class Iar
             return False;
         }
 
-        // check if the folder is writable
-        if (!is_writable('/home/'. $this->username. '/opensimulator/iar/'))
-        {
-            logWrite('[iar] folder not writable : '. '/home/'. $this->username. '/opensimulator/iar/');
-            return False;
-        }
-
         $command = 'save iar';
 
         // add the parameters

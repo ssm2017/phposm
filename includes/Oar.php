@@ -150,12 +150,6 @@ class Oar
             return False;
         }
 
-        if (!is_writable('/home/'. $this->username. '/opensimulator/oar/'))
-        {
-            logWrite('[oar] folder not writable : '. '/home/'. $this->username. '/opensimulator/oar/');
-            return False;
-        }
-
         $command = 'save oar';
 
         // add the parameters
