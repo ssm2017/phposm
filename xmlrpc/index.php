@@ -10,7 +10,7 @@
  * other free or open source software licenses.
  */
 
-include('../../config.php');
+include('../../etc/config.php');
 include('../includes/helpers/common.php');
 include('../includes/helpers/archive.php');
 
