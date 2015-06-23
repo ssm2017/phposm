@@ -24,6 +24,7 @@ class Sim
     public $has_regions_ini;
     public $has_tmux_log;
     public $radmin_ready;
+    public $radmin_port;
     public $radmin_password;
     public $valid;
     public $regions;
@@ -43,6 +44,7 @@ class Sim
         $this->has_regions_ini = False;
         $this->has_tmux_log = False;
         $this->radmin_ready = False;
+        $this->radmin_port = 0;
         $this->radmin_password = '';
         $this->valid = False;
         $this->regions = array();
@@ -98,6 +100,7 @@ class Sim
                 {
                     if (isset($opensim_ini['RemoteAdmin']['port']))
                     {
+                        $this->radmin_port = $opensim_ini['RemoteAdmin']['port'];
                         if (isset($opensim_ini['RemoteAdmin']['access_password']))
                         {
                             $this->radmin_password = $opensim_ini['RemoteAdmin']['access_password'];
