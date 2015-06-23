@@ -38,7 +38,7 @@ function logWrite($message)
             $filename = $GLOBALS['config']['log_path'];
         }
         $current = file_get_contents($filename);
-        $current .= $message. "\n";
+        $current .= strftime("%y%m%d-%H%M"). ': '. $message. "\n";
         file_put_contents($filename, $current);
     }
 }
