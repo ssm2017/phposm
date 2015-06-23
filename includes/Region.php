@@ -226,16 +226,17 @@ class Region
     {
         logWrite('[region] isAlive called');
         // get the sim
-        $sim = new Sim($this->sim_path);
+        $sim = new Sim($this->sim_path, True);
 
         // check if sim is alive
-        if ($sim->isAlive())
+        if (!$sim->isAlive())
         {
             $this->alive = False;
             return False;
         }
+
         // check if the region is alive
-        $headers = getHeaders('http://127.0.0.1:'. $this->internal_port. '/monitorstats/'. $this->region_uuid);
+        $headers = getHeaders('http://127.0.0.1:'. $sim->port. '/monitorstats/'. $this->region_uuid);
         $codes = explode(' ', $headers[0]);
         if (isset($codes[1]) && $codes[1] == 200)
         {
