@@ -10,9 +10,9 @@
  * other free or open source software licenses.
  */
 
-include('../../../etc/config.php');
-include('../includes/common.php');
-include('../includes/archive.php');
+include('../../etc/config.php');
+include('../includes/helpers/common.php');
+include('../includes/helpers/archive.php');
 $query = $_GET['q'];
 $file_path = parseArchiveUrl('/archive/'. $query);
 if (is_null($file_path))
