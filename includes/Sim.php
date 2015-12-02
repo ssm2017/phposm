@@ -208,6 +208,7 @@ class Sim
         // check if the sim is responding to simstatus
         $headers = getHeaders('http://127.0.0.1:'. $this->port. '/simstatus');
         $codes = explode(' ', $headers[0]);
+        $check_simstatus = False;
         if (isset($codes[1]) && $codes[1] == 200)
         {
             $check_simstatus = True;
