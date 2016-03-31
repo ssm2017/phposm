@@ -166,7 +166,7 @@ class Sim
 
     function run($action)
     {
-        if (!in_array($action, array('start', 'stop', 'kill')))
+        if (!in_array($action, array('start', 'stop', 'kill', 'restart')))
         {
             return False;
         }
@@ -193,6 +193,9 @@ class Sim
                 break;
             case 'kill':
                 $this->killSim();
+                break;
+            case 'restart':
+                $this->restartSim();
                 break;
         }
     }
@@ -301,6 +304,22 @@ class Sim
         if (in_array($this->name, $tmux->sessions))
         {
             $tmux->killSession($this->name);
+        }
+    }
+
+    function restartSim()
+    {
+        logWrite('[sim] restartSim called');
+        // get the tmux session
+        $tmux = new Tmux($this->username);
+        $tmux->listSessions();
+        if (in_array($this->name, $tmux->sessions))
+        {
+            $tmux->sendKeys(array(
+                'session-name' => $this->name,
+                'window-name' => 'OpenSimulator',
+                'keys' => 'restart'
+            ));
         }
     }
 }

@@ -29,7 +29,7 @@ logWrite('== CLI Request ==');
 
 function display_help() {
     echo <<<EOD
-Usage : php cli.php <check|start|stop|kill> <sim_path>
+Usage : php cli.php <check|start|stop|kill|restart> <sim_path>
 EOD;
 echo PHP_EOL;
 }
@@ -54,6 +54,7 @@ switch ($argv[1]) {
     case 'start':
     case 'stop':
     case 'kill':
+    case 'restart':
         run_sim($argv[2], $argv[1]);
         break;
     default:
