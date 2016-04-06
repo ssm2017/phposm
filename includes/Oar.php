@@ -136,13 +136,6 @@ class Oar
         */
         logWrite('[oar] osSaveOar called');
 
-        // check the name
-        if ($this->name == '')
-        {
-            logWrite('[oar] no oar name defined');
-            return False;
-        }
-
         // check the sim path
         if (!is_dir($sim_path))
         {
@@ -170,7 +163,7 @@ class Oar
         {
             $command .= ' --all';
         }
-        $this->name = basename($sim_path, '.sim'). strftime("%y%m%d-%H%M");
+        $this->name = basename($sim_path, '.sim'). '-'. strftime("%y%m%d-%H%M");
         $this->path = '/home/'. $this->username. '/opensimulator/oar/'. $this->name. '.oar';
 
         $command .= ' '. $this->path;

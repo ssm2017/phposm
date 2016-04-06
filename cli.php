@@ -29,7 +29,7 @@ logWrite('== CLI Request ==');
 
 function display_help() {
     echo <<<EOD
-Usage : php cli.php <check|start|stop|kill|restart> <sim_path>
+Usage : php cli.php <check|start|stop|kill|restart|backup> <sim_path>
 EOD;
 echo PHP_EOL;
 }
@@ -56,6 +56,9 @@ switch ($argv[1]) {
     case 'kill':
     case 'restart':
         run_sim($argv[2], $argv[1]);
+        break;
+    case 'backup':
+        backup_sim($argv[2], $argv[3]);
         break;
     default:
         display_help();
@@ -103,5 +106,15 @@ function run_sim($sim_path, $action) {
     exit(0);
 }
 
+function backup_sim($sim_path, $username) {
+    logWrite('[cli] backup_sim called');
+    // get sim name
+    $sim_name = pathinfo($sim_path)['filename'];
+    $oar = new Oar($username, $sim_name);
+    $params = array();
+    $oar->osSaveOar($sim_path, $params);
+    print_r($oar);
+    exit(0);
+}
 exit(0);
 ?>
