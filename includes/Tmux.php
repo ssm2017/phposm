@@ -26,8 +26,11 @@ class Tmux
     {
         $this->last_response = array();
         $this->last_code = Null;
-
         exec('sudo -u '. $this->user_name. ' tmux '. $command. ' 2>&1', $this->last_response, $this->last_code);
+        if ($this->last_code != 0) {
+            logWrite('[last_response] : '. print_r($this->last_response, True));
+            logWrite('[last_code] : '. $this->last_code);
+        }
     }
 
     /*
@@ -103,7 +106,6 @@ class Tmux
         {
             $command .= ' "'. $params['keys']. '"'. ' Enter';
         }
-
         $this->exec('send-keys'. $command);
     }
 
