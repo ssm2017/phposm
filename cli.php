@@ -9,9 +9,9 @@
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  */
-include('../etc/config.php');
-include('includes/helpers/common.php');
-include('includes/helpers/archive.php');
+include(dirname(__FILE__).'/../etc/config.php');
+include(dirname(__FILE__).'/includes/helpers/common.php');
+include(dirname(__FILE__).'/includes/helpers/archive.php');
 // autoloader source : http://www.grafikart.fr/formations/programmation-objet-php/autoload
 class Autoloader
 {
@@ -21,7 +21,7 @@ class Autoloader
     }
     static function autoload($class)
     {
-        require 'includes/'. $class . '.php';
+        require dirname(__FILE__).'/includes/'. $class . '.php';
     }
 }
 Autoloader::register();
